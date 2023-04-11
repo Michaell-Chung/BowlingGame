@@ -12,7 +12,7 @@ public class BowlingGame {
         int score = 0;
         int frameIndex = 0;
         for (int frame = 0; frame < 10; frame++) {
-            if (rolls[frameIndex] == 10)
+            if (isStrike(frameIndex))
             {
                 score += 10 + strikeBonus(frameIndex);
                 frameIndex++;
@@ -25,6 +25,9 @@ public class BowlingGame {
             }
         }
         return score;
+    }
+    private boolean isStrike(int frameIndex) {
+        return rolls[frameIndex] == 10;
     }
 
     private int sumOfBallsInFrame(int frameIndex) {
