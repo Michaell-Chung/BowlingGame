@@ -21,16 +21,18 @@ public class BowlingGameUnitTest {
 
     @Test
     public void test20Zeros() {
-        for(int i=0;i<20;i++){
-            game.roll(0);
-        }
+        rollMany(0,20);
         assertEquals(0,game.score());
     }
     @Test
     public void testAllOnes() {
-        for(int i=0;i<20;i++){
-            game.roll(1);
-        }
+        rollMany(1, 20);
         assertEquals(20, game.score());
+    }
+
+    private void rollMany(int pin, int times) {
+        for(int i=0;i<20;i++){
+            game.roll(pin);
+        }
     }
 }
