@@ -29,21 +29,29 @@ public class BowlingGameUnitTest {
         rollMany(1, 20);
         assertEquals(20, game.score());
     }
-
-    public void testOneSpare() throws Exception {
+    @Test
+    public void testOneSpare()  {
         rollSpare();
-        game.roll(3);
+        game.roll(6);
         rollMany(17,0);
-        assertEquals(16,game.score());
-
+        assertEquals(22,game.score());
     }
+    @Test
+    public void testOneStrike() {
+        game.roll(10); // strike
+        game.roll(3);
+        game.roll(4);
+        rollMany(16, 0);
+        assertEquals(24, game.score());
+    }
+
     private void rollSpare() {
         game.roll(5);
         game.roll(5);
     }
 
     private void rollMany(int pin, int times) {
-        for(int i=0;i<20;i++){
+        for(int i=0;i<times;i++){
             game.roll(pin);
         }
     }
